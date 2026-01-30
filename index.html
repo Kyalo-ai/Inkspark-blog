@@ -3,54 +3,243 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>InkSpark | Digital </title>
+  <title>InkSpark | Digital News</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Times New Roman', Times, serif;
+      font-family: 'Libre Baskerville', 'Times New Roman', serif;
       background-color: #04050a;
       color: #fff;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
     }
-/* Starfield Background */
-    .starfield {
+
+    /* Enhanced Animated Background */
+    .cosmic-bg {
       position: fixed;
       inset: 0;
       z-index: 0;
-      background:
-        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.9) 0.6px, transparent 0.62px),
-        radial-gradient(circle at 80% 40%, rgba(255,255,255,0.85) 0.8px, transparent 0.82px);
-      background-size: 400px 400px, 600px 600px;
-      animation: moveStars 120s linear infinite;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(79, 199, 240, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(169, 214, 72, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 40% 60%, rgba(167, 103, 229, 0.1) 0%, transparent 40%),
+        #04050a;
+      overflow: hidden;
     }
 
-    @keyframes moveStars {
-      from { background-position: 0 0, 0 0; }
-      to   { background-position: -2000px -1000px, -1200px -700px; }
+    /* Animated Nebula Layers */
+    .cosmic-bg::before,
+    .cosmic-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
     }
 
-    .page-content { position: relative; z-index: 1; }
+    /* Main star layer */
+    .cosmic-bg::before {
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.9) 1px, transparent 1.5px),
+        radial-gradient(circle at 30% 40%, rgba(255,255,255,0.85) 0.8px, transparent 1.3px),
+        radial-gradient(circle at 50% 60%, rgba(255,255,255,0.8) 1.2px, transparent 1.7px),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.9) 0.7px, transparent 1.2px),
+        radial-gradient(circle at 90% 30%, rgba(255,255,255,0.85) 1px, transparent 1.5px);
+      background-size: 500px 500px;
+      animation: starsMove 120s linear infinite;
+    }
 
-    /* page content above effects */
+    /* Deep star layer */
+    .cosmic-bg::after {
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(200,220,255,0.6) 0.4px, transparent 0.8px),
+        radial-gradient(circle at 60% 20%, rgba(180,200,255,0.5) 0.3px, transparent 0.7px),
+        radial-gradient(circle at 80% 60%, rgba(160,180,255,0.5) 0.5px, transparent 1px);
+      background-size: 800px 800px;
+      animation: starsMoveSlow 200s linear infinite;
+      opacity: 0.7;
+    }
 
-.page-content { position: relative; z-index: 1; }
+    /* Floating particles */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: floatParticle 20s linear infinite;
+    }
+
+    .particle:nth-child(1) {
+      width: 2px; height: 2px;
+      top: 10%; left: 20%;
+      animation-delay: 0s;
+      animation-duration: 25s;
+    }
+
+    .particle:nth-child(2) {
+      width: 3px; height: 3px;
+      top: 30%; left: 70%;
+      animation-delay: 5s;
+      animation-duration: 30s;
+    }
+
+    .particle:nth-child(3) {
+      width: 1px; height: 1px;
+      top: 60%; left: 40%;
+      animation-delay: 10s;
+      animation-duration: 20s;
+    }
+
+    .particle:nth-child(4) {
+      width: 2px; height: 2px;
+      top: 80%; left: 60%;
+      animation-delay: 15s;
+      animation-duration: 35s;
+    }
+
+    .particle:nth-child(5) {
+      width: 1px; height: 1px;
+      top: 40%; left: 90%;
+      animation-delay: 20s;
+      animation-duration: 40s;
+    }
+
+    /* Animations */
+    @keyframes starsMove {
+      0% { background-position: 0 0; }
+      100% { background-position: -500px -500px; }
+    }
+
+    @keyframes starsMoveSlow {
+      0% { background-position: 0 0; }
+      100% { background-position: -800px -800px; }
+    }
+
+    @keyframes floatParticle {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+      }
+      25% {
+        transform: translate(100px, 50px) scale(1.2);
+        opacity: 1;
+      }
+      50% {
+        transform: translate(200px, 0) scale(1);
+        opacity: 0.8;
+      }
+      75% {
+        transform: translate(100px, -50px) scale(0.8);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+      }
+    }
+
+    /* Glow Animation */
+    @keyframes glowPulse {
+      0%, 100% { 
+        filter: drop-shadow(0 0 5px rgba(79, 199, 240, 0.3));
+        transform: scale(1);
+      }
+      50% { 
+        filter: drop-shadow(0 0 20px rgba(79, 199, 240, 0.7));
+        transform: scale(1.05);
+      }
+    }
+
+    .page-content { 
+      position: relative; 
+      z-index: 2;
+      min-height: 100vh;
+    }
+
+    /* Enhanced Logo */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-spark {
+      position: relative;
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo-spark::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #4fc7f0, #a9d648, #a767e5);
+      border-radius: 50%;
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+
+    .logo-spark::after {
+      content: '📡';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-main {
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #4fc7f0, #a9d648, #a767e5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 1px;
+    }
+
+    .logo-tagline {
+      font-size: 11px;
+      color: #94a3b8;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: -2px;
+    }
 
     /* Layout */
-    .container { width: 90%; max-width: 1400px; margin: 0 auto; }
+    .container { 
+      width: 90%; 
+      max-width: 1400px; 
+      margin: 0 auto; 
+    }
 
     header {
-      background: transparent;
       padding: 20px 0;
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 110;
+      background: rgba(4, 5, 10, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(79, 199, 240, 0.1);
     }
 
     nav {
@@ -59,187 +248,448 @@
       align-items: center;
     }
 
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      color: #4fc7f0;
-      text-decoration: none;
-    }
-
     ul {
       list-style: none;
       display: flex;
-      gap: 18px;
+      gap: 25px;
     }
 
     ul a {
       color: #94a3b8;
       text-decoration: none;
-      padding: 8px 12px;
+      padding: 8px 16px;
       border-radius: 6px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
-    ul a.active, ul a:hover {
+    ul a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #4fc7f0, #a767e5);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    ul a:hover,
+    ul a.active {
       color: #fff;
-      background: #1a1d24;
     }
 
-    main { margin-top: 100px; padding-bottom: 60px; }
+    ul a:hover::after,
+    ul a.active::after {
+      width: 70%;
+    }
 
-    /* Image Figure */
+    main { 
+      padding-top: 120px; 
+      padding-bottom: 80px; 
+    }
+
+    /* Featured Section with Enhanced Animation */
+    .featured-section { 
+      margin-bottom: 60px; 
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .featured-card {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+      background: rgba(26, 29, 36, 0.7);
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid rgba(79, 199, 240, 0.1);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(79, 199, 240, 0.5), transparent);
+    }
+
     figure {
       margin: 0;
       position: relative;
       overflow: hidden;
-      border-radius: 8px;
+      border-radius: 12px;
+      flex: 1;
+      min-width: 300px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     }
 
     figure img {
       width: 100%;
-      height: 200px;
+      height: 350px;
       object-fit: cover;
-      transition: transform 0.3s ease;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    figure:hover img { transform: scale(1.05); }
+    figure:hover img { 
+      transform: scale(1.08) rotate(1deg); 
+    }
 
     figcaption {
       position: absolute;
-      left: 12px;
-      bottom: 12px;
-      background: rgba(10,12,18,0.72);
-      color: #dcefff;
-      padding: 6px 10px;
-      border-radius: 6px;
+      left: 20px;
+      bottom: 20px;
+      background: rgba(4, 5, 10, 0.8);
+      color: #4fc7f0;
+      padding: 8px 16px;
+      border-radius: 8px;
       font-size: 12px;
       font-weight: 600;
+      letter-spacing: 1px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(79, 199, 240, 0.2);
     }
 
-    /* Featured */
-    .featured-section { margin-bottom: 40px; }
-
-    .featured-card {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      flex-wrap: wrap;
+    .featured-details { 
+      flex: 1;
+      min-width: 300px;
     }
-
-    .featured-details { max-width: 560px; }
 
     .featured-badge {
       display: inline-block;
-      background: linear-gradient(90deg,#4fc7f0,#a9d648,#a767e5);
+      background: linear-gradient(90deg, #4fc7f0, #a9d648, #a767e5);
       color: #081015;
-      padding: 6px 14px;
-      border-radius: 18px;
+      padding: 8px 20px;
+      border-radius: 20px;
       font-weight: 700;
-      margin-bottom: 12px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      animation: badgePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     .featured-title {
-      font-size: 30px;
-      margin: 12px 0;
+      font-size: 36px;
+      margin: 15px 0 20px;
       color: #fff;
+      line-height: 1.2;
+      background: linear-gradient(90deg, #fff, #4fc7f0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .featured-description {
       color: #c4ced7;
-      line-height: 1.6;
+      line-height: 1.8;
+      font-size: 17px;
+      margin-bottom: 30px;
     }
 
-    /* Articles Grid */
+    /* Articles Grid with Hover Effects */
     .section-title {
       text-align: center;
-      margin: 36px 0 20px;
-      font-size: 32px;
+      margin: 60px 0 40px;
+      font-size: 42px;
+      color: #fff;
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, #4fc7f0, #a767e5);
+      border-radius: 2px;
     }
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      animation: fadeInUp 1s ease-out 0.3s both;
     }
 
     .article-card {
-      background: #0f1114;
-      border-radius: 10px;
+      background: rgba(26, 29, 36, 0.7);
+      border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.04);
-      box-shadow: 0 6px 20px rgba(2,4,8,0.6);
-      transition: transform 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .article-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #4fc7f0, #a767e5);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
     }
 
     .article-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 18px 40px rgba(79,199,240,0.1);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 
+        0 25px 50px rgba(79, 199, 240, 0.15),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+      border-color: rgba(79, 199, 240, 0.3);
     }
 
-    .card-content { padding: 16px; }
+    .article-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card-content { 
+      padding: 25px; 
+    }
 
     .card-category {
       display: inline-block;
-      background: rgba(79,199,240,0.06);
+      background: rgba(79,199,240,0.1);
       color: #4fc7f0;
-      padding: 6px 12px;
-      border-radius: 12px;
+      padding: 8px 16px;
+      border-radius: 20px;
       font-weight: 700;
       font-size: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(79, 199, 240, 0.2);
     }
 
     .card-title {
       color: #fff;
-      font-size: 16px;
-      margin: 8px 0;
+      font-size: 20px;
+      margin: 10px 0 15px;
+      line-height: 1.4;
+      transition: color 0.3s ease;
+    }
+
+    .article-card:hover .card-title {
+      color: #4fc7f0;
     }
 
     .card-description {
       color: #9aa8b3;
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Author Info */
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .author-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, #4fc7f0, #a767e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #081015;
+      font-size: 16px;
+      box-shadow: 0 5px 15px rgba(79, 199, 240, 0.3);
+    }
+
+    .author-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .author-name {
+      font-weight: 700;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .author-role {
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
+    .read-btn {
+      background: linear-gradient(90deg, #4fc7f0, #a767e5);
+      color: #081015;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .read-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(79, 199, 240, 0.3);
     }
 
     /* Footer */
     footer {
-      padding: 40px 0;
-      margin-top: 40px;
+      padding: 60px 0 40px;
+      margin-top: 80px;
       text-align: center;
+      background: rgba(4, 5, 10, 0.9);
+      border-top: 1px solid rgba(79, 199, 240, 0.1);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(79, 199, 240, 0.5), transparent);
     }
 
     .footer-logo {
-      font-size: 22px;
-      color: #4fc7f0;
+      font-size: 24px;
       font-weight: 700;
-      margin-bottom: 8px;
+      background: linear-gradient(90deg, #4fc7f0, #a767e5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 15px;
+      display: inline-block;
     }
 
-    /* Responsive */
+    .footer-tagline {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer-contact {
+      color: #4fc7f0;
+      margin: 10px 0;
+      font-size: 15px;
+    }
+
+    .copyright {
+      color: #64748b;
+      font-size: 13px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Responsive Design */
     @media (max-width: 1200px) {
-      .cards-grid { grid-template-columns: repeat(3, 1fr); }
+      .cards-grid { 
+        grid-template-columns: repeat(3, 1fr); 
+      }
+      .featured-title { 
+        font-size: 32px; 
+      }
     }
     
     @media (max-width: 900px) {
-      .cards-grid { grid-template-columns: repeat(2, 1fr); }
-      nav { flex-direction: column; gap: 12px; }
+      .cards-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+      }
+      nav { 
+        flex-direction: column; 
+        gap: 20px; 
+      }
+      .featured-card {
+        flex-direction: column;
+      }
+      figure {
+        width: 100%;
+      }
     }
     
     @media (max-width: 600px) {
-      .cards-grid { grid-template-columns: 1fr; }
-      .featured-title { font-size: 22px; }
+      .cards-grid { 
+        grid-template-columns: 1fr; 
+      }
+      .featured-title { 
+        font-size: 26px; 
+      }
+      .section-title {
+        font-size: 32px;
+      }
+      ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
     }
-     
   </style>
 </head>
 <body>
-  <div class="starfield" aria-hidden="true"></div>
+  <!-- Enhanced Animated Background -->
+  <div class="cosmic-bg" aria-hidden="true">
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+  </div>
 
   <div class="page-content">
     <header>
       <nav class="container">
-        <a class="logo" href="./index.html">InkSpark Digital</a>
+        <div class="logo-container">
+          <div class="logo-spark"></div>
+          <div class="logo-text">
+            <div class="logo-main">InkSpark</div>
+            <div class="logo-tagline">Digital News</div>
+          </div>
+        </div>
         <ul>
-          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a href="#">Articles</a></li>
           <li><a href="#">Categories</a></li>
           <li><a href="#">Writers</a></li>
@@ -251,7 +701,7 @@
     <main class="container">
       <section class="featured-section">
         <div class="featured-card">
-          <figure style="width:60%; max-width:820px;">
+          <figure>
             <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Future of Writing">
             <figcaption>AI Writing Assistant</figcaption>
           </figure>
@@ -260,15 +710,16 @@
             <span class="featured-badge">FEATURED</span>
             <h1 class="featured-title">The Future of Digital Writing in 2026</h1>
             <p class="featured-description">
-              Discover how technology is transforming the way we create, share, and consume written content. From AI assistance to new publishing platforms.
+              Discover how cutting-edge technology is revolutionizing the way we create, share, and consume written content. From AI-powered writing assistants to decentralized publishing platforms, explore the innovations shaping the future of digital storytelling.
             </p>
-            <div style="margin-top:18px;display:flex;gap:14px;align-items:center;">
-              <div style="display:flex;align-items:center;gap:10px;">
-                <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(90deg,#4fc7f0,#a767e5);display:flex;align-items:center;justify-content:center;font-weight:700;color:#081015;">JK</div>
-                <div style="font-weight:700;">James Kelly</div>
+            <div class="author-info">
+              <div class="author-avatar">JK</div>
+              <div class="author-details">
+                <div class="author-name">James Kelly</div>
+                <div class="author-role">Senior Editor & Tech Writer</div>
               </div>
-              <a href="#" style="background:#4fc7f0;color:#081015;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700;">Read Article</a>
             </div>
+            <a href="#" class="read-btn">Read Full Article</a>
           </div>
         </div>
       </section>
@@ -286,6 +737,13 @@
             <span class="card-category">AI & Technology</span>
             <h3 class="card-title">How AI is Changing Creative Writing</h3>
             <p class="card-description">Exploring the impact of artificial intelligence on modern writing workflows and creativity.</p>
+            <div class="author-info">
+              <div class="author-avatar">SM</div>
+              <div class="author-details">
+                <div class="author-name">Sarah Miano</div>
+                <div class="author-role">AI Writing Specialist</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -299,6 +757,13 @@
             <span class="card-category">SEO & Marketing</span>
             <h3 class="card-title">Advanced SEO Strategies for Writers</h3>
             <p class="card-description">Learn the latest SEO techniques to improve your content's visibility and reach.</p>
+            <div class="author-info">
+              <div class="author-avatar">RK</div>
+              <div class="author-details">
+                <div class="author-name">Robert Kimani</div>
+                <div class="author-role">SEO Expert</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -312,6 +777,13 @@
             <span class="card-category">Business</span>
             <h3 class="card-title">Monetizing Your Writing Skills Online</h3>
             <p class="card-description">Discover various ways to turn your writing passion into sustainable income.</p>
+            <div class="author-info">
+              <div class="author-avatar">LC</div>
+              <div class="author-details">
+                <div class="author-name">Lisa Chule</div>
+                <div class="author-role">Business Writer</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -324,7 +796,14 @@
           <div class="card-content">
             <span class="card-category">Tools</span>
             <h3 class="card-title">Essential Writing Tools for 2026</h3>
-            <p class="card-description">A guide to the best software and apps for modern writers.</p>
+            <p class="card-description">A comprehensive guide to the best software and apps for modern writers.</p>
+            <div class="author-info">
+              <div class="author-avatar">DT</div>
+              <div class="author-details">
+                <div class="author-name">David Tiffa</div>
+                <div class="author-role">Tech Reviewer</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -338,6 +817,13 @@
             <span class="card-category">Fiction Writing</span>
             <h3 class="card-title">Crafting Compelling Fiction Characters</h3>
             <p class="card-description">Techniques for creating memorable and believable fictional characters.</p>
+            <div class="author-info">
+              <div class="author-avatar">AJ</div>
+              <div class="author-details">
+                <div class="author-name">Alex Johnson</div>
+                <div class="author-role">Fiction Author</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -351,6 +837,13 @@
             <span class="card-category">Poetry</span>
             <h3 class="card-title">Modern Poetry Writing Techniques</h3>
             <p class="card-description">Exploring contemporary approaches to poetic expression and form.</p>
+            <div class="author-info">
+              <div class="author-avatar">MK</div>
+              <div class="author-details">
+                <div class="author-name">Maria Kyalo</div>
+                <div class="author-role">Poet & Educator</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -364,6 +857,13 @@
             <span class="card-category">Journalism</span>
             <h3 class="card-title">Digital Journalism in the Modern Age</h3>
             <p class="card-description">How journalism has evolved with digital platforms and social media.</p>
+            <div class="author-info">
+              <div class="author-avatar">TW</div>
+              <div class="author-details">
+                <div class="author-name">Taylor Willy</div>
+                <div class="author-role">Journalist</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -377,6 +877,13 @@
             <span class="card-category">Copywriting</span>
             <h3 class="card-title">Persuasive Copywriting Techniques</h3>
             <p class="card-description">Master the art of writing copy that converts and persuades.</p>
+            <div class="author-info">
+              <div class="author-avatar">KC</div>
+              <div class="author-details">
+                <div class="author-name">Kevin Cheni</div>
+                <div class="author-role">Copywriter</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -390,6 +897,13 @@
             <span class="card-category">Screenwriting</span>
             <h3 class="card-title">Screenwriting for Beginners</h3>
             <p class="card-description">Essential tips for starting your journey in screenwriting.</p>
+            <div class="author-info">
+              <div class="author-avatar">ES</div>
+              <div class="author-details">
+                <div class="author-name">Emma Sila</div>
+                <div class="author-role">Screenwriter</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -403,6 +917,13 @@
             <span class="card-category">Blogging</span>
             <h3 class="card-title">Building a Successful Blog</h3>
             <p class="card-description">Step-by-step guide to creating and growing a popular blog.</p>
+            <div class="author-info">
+              <div class="author-avatar">JN</div>
+              <div class="author-details">
+                <div class="author-name">Jessica Nguye</div>
+                <div class="author-role">Blogger</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -416,6 +937,13 @@
             <span class="card-category">Editing</span>
             <h3 class="card-title">Professional Editing Techniques</h3>
             <p class="card-description">Learn how to edit your work like a professional editor.</p>
+            <div class="author-info">
+              <div class="author-avatar">MM</div>
+              <div class="author-details">
+                <div class="author-name">Michael Musyoka</div>
+                <div class="author-role">Editor</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -429,6 +957,13 @@
             <span class="card-category">Research</span>
             <h3 class="card-title">Effective Research for Writers</h3>
             <p class="card-description">How to conduct thorough research for your writing projects.</p>
+            <div class="author-info">
+              <div class="author-avatar">OR</div>
+              <div class="author-details">
+                <div class="author-name">Olivia Remma</div>
+                <div class="author-role">Researcher</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -442,6 +977,13 @@
             <span class="card-category">Productivity</span>
             <h3 class="card-title">Writer's Productivity Hacks</h3>
             <p class="card-description">Boost your writing productivity with these effective techniques.</p>
+            <div class="author-info">
+              <div class="author-avatar">SP</div>
+              <div class="author-details">
+                <div class="author-name">Samuel Paula</div>
+                <div class="author-role">Productivity Coach</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -455,6 +997,13 @@
             <span class="card-category">Education</span>
             <h3 class="card-title">Teaching Creative Writing</h3>
             <p class="card-description">Methods and approaches for teaching writing effectively.</p>
+            <div class="author-info">
+              <div class="author-avatar">RW</div>
+              <div class="author-details">
+                <div class="author-name">Rachel Wima</div>
+                <div class="author-role">Educator</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -468,6 +1017,13 @@
             <span class="card-category">Publishing</span>
             <h3 class="card-title">Modern Publishing Platforms</h3>
             <p class="card-description">Overview of today's best platforms for publishing your work.</p>
+            <div class="author-info">
+              <div class="author-avatar">DS</div>
+              <div class="author-details">
+                <div class="author-name">Daniel Onyango</div>
+                <div class="author-role">Publisher</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -481,6 +1037,13 @@
             <span class="card-category">Technical Writing</span>
             <h3 class="card-title">Technical Writing Fundamentals</h3>
             <p class="card-description">Essential skills for clear and effective technical documentation.</p>
+            <div class="author-info">
+              <div class="author-avatar">AL</div>
+              <div class="author-details">
+                <div class="author-name">Amanda Wanjiku</div>
+                <div class="author-role">Technical Writer</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -494,6 +1057,13 @@
             <span class="card-category">Travel Writing</span>
             <h3 class="card-title">The Art of Travel Writing</h3>
             <p class="card-description">Capture the essence of places through compelling travel writing.</p>
+            <div class="author-info">
+              <div class="author-avatar">BM</div>
+              <div class="author-details">
+                <div class="author-name">Brian Mwenda</div>
+                <div class="author-role">Travel Writer</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -507,6 +1077,13 @@
             <span class="card-category">Memoir Writing</span>
             <h3 class="card-title">Writing Personal Memoirs</h3>
             <p class="card-description">Techniques for transforming personal experiences into compelling narratives.</p>
+            <div class="author-info">
+              <div class="author-avatar">CE</div>
+              <div class="author-details">
+                <div class="author-name">Christopher Evans</div>
+                <div class="author-role">Memoirist</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -520,6 +1097,13 @@
             <span class="card-category">Science Writing</span>
             <h3 class="card-title">Communicating Complex Science</h3>
             <p class="card-description">Making scientific concepts accessible to general audiences.</p>
+            <div class="author-info">
+              <div class="author-avatar">CH</div>
+              <div class="author-details">
+                <div class="author-name">Catherine Halima</div>
+                <div class="author-role">Science Writer</div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -533,6 +1117,13 @@
             <span class="card-category">Freelance Writing</span>
             <h3 class="card-title">Building a Freelance Writing Career</h3>
             <p class="card-description">Strategies for success in the competitive freelance writing market.</p>
+            <div class="author-info">
+              <div class="author-avatar">GO</div>
+              <div class="author-details">
+                <div class="author-name">Givan Omondi</div>
+                <div class="author-role">Freelance Writer</div>
+              </div>
+            </div>
           </div>
         </article>
       </div>
@@ -540,9 +1131,11 @@
 
     <footer>
       <div class="container">
-        <div class="footer-logo">InkSpark Digital</div>
-        <div style="color:#94a3b8;margin-bottom:8px;">Contact: 0759208088 • Privacy • Terms</div>
-        <div style="color:#94a3b8;font-size:13px;">© 2026 InkSpark Digital Media. All rights reserved.</div>
+        <div class="footer-logo">InkSpark</div>
+        <div class="footer-tagline">Digital Writing Platform</div>
+        <div class="footer-contact">Contact: 0759208088</div>
+        <div style="color:#94a3b8;margin:15px 0;">Privacy • Terms • About</div>
+        <div class="copyright">© 2026 InkSpark Digital Media. All rights reserved.</div>
       </div>
     </footer>
   </div>
