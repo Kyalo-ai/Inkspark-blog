@@ -3,7 +3,7 @@ KIVAI ERIC YALO
 
 # Inkspark Blog
 
-A minimal static blog (Inkspark-blog). This README explains the repository structure and walks through the code step‑by‑step so you (or contributors) can understand how each part works and where to change things. Screenshots placeholders are included for you to replace with actual images.
+A minimal static blog (Inkspark-blog). This README explains the repository structure and walks through the code step‑by‑step so you  can understand how each part works and where to change things. Screenshots placeholders are included for you to replace with actual images.
 
 ---
 
@@ -161,12 +161,45 @@ Post page
 ![Post page screenshot](<img width="461" height="620" alt="image" src="https://github.com/user-attachments/assets/9e671836-340a-4324-98cd-d622ae6e76e5" />
 )
 
-Admin / Editing workflow (optional)
-![Editing screenshot](screenshots/editing.png)
 
 Animation code style(<img width="769" height="199" alt="image" src="https://github.com/user-attachments/assets/8a5bfc70-975b-45e9-881f-516841495dc6" />
+
 animation code(<img width="456" height="491" alt="image" src="https://github.com/user-attachments/assets/2f539f16-a922-4f63-8980-ced7cf6732c3" />
 
+
 whole blog(<img width="1334" height="731" alt="image" src="https://github.com/user-attachments/assets/36fc7bad-5b5c-4e47-bdab-bcbda1fbf20e" />
+-the code below shows how the layout is designed
+its color, positions how the list are to be layed out
+layout code (<img width="864" height="498" alt="image" src="https://github.com/user-attachments/assets/e3fedeca-770f-47bc-86a7-eeb276723952" />
+The picture below show how the picture are layed out
+image(<img width="874" height="313" alt="image" src="https://github.com/user-attachments/assets/0c6f8042-2eff-47e9-b61e-de715f20a7fa" />
+
+
+ This is how the figure caption is layed out
+ image(<img width="892" height="267" alt="image" src="https://github.com/user-attachments/assets/60f08c53-cd16-40f7-bf93-b8651eb7b09b" />
+ 
+This is how the articles are designed using css
+imag(<img width="868" height="192" alt="image" src="https://github.com/user-attachments/assets/6511fe50-70ad-4622-a828-d46348019edf" />
+
+
+Upnext is the layout of the author .There information and the abbreviations of their names
+image(<img width="861" height="516" alt="image" src="https://github.com/user-attachments/assets/0badb0c8-b705-44c1-9c66-a1164f2b070c" />
+image(<img width="874" height="298" alt="image" src="https://github.com/user-attachments/assets/b5f080bd-5ee5-4685-8f0f-ff6674fbd007" />
+image(<img width="375" height="83" alt="image" src="https://github.com/user-attachments/assets/b1449305-3b52-4979-aba9-42d801fb25dd" />
+
+
+
+The read button design including the colour
+image(<img width="877" height="354" alt="image" src="https://github.com/user-attachments/assets/5ad1dce6-28fd-47e7-bfa3-5251c8e6cd23" />
+image(<img width="611" height="130" alt="image" src="https://github.com/user-attachments/assets/04c4c286-311c-4182-a04e-8e67c9c2c27f" />
+
+footer layout design(<img width="708" height="483" alt="image" src="https://github.com/user-attachments/assets/4fb79440-c84d-49b0-82de-0ea79b625b85" />
+
+
+
+
+
+
+
 
 
