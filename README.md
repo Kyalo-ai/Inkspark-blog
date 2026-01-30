@@ -5,28 +5,6 @@ KIVAI ERIC YALO
 
 A minimal static blog (Inkspark-blog). This README explains the repository structure and walks through the code step‑by‑step so you  can understand how each part works and where to change things. Screenshots placeholders are included for you to replace with actual images.
 
----
-
-Table of contents
-- About
-- Quick start
-- Project structure
-- index.html — step-by-step code walkthrough
-  - head (meta, styles, fonts)
-  - layout (header, navigation, hero, posts list, sidebar, footer)
-  - post markup explained
-  - scripts and behavior
-- Screenshots (placeholders)
-- Contributing
-- License
-
----
-
-About
-A simple static blog delivered as HTML/CSS The main entry point is `index.html`.
-
-
-
 index.html — step-by-step code walkthrough
 Below is a generic annotated breakdown of a typical static blog `index.html`. Open your repository's `index.html` and compare each section.
 
